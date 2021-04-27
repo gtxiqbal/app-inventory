@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+	<window id="winSearchKaryawan" border="0" hflex="1" vflex="1" sclass="inner-window"
+	        apply="${searchLaptopController}" action="show: slideDown;hide: slideUp" closable="true">
+		<vlayout width="1000px" height="300px" style="overflow: auto">
+			<groupbox>
+				<caption label="Pencarian Data Laptop" />
+				<grid>
+					<columns>
+						<column hflex="1"/>
+						<column hflex="3"/>
+						<column hflex="4"/>
+					</columns>
+					<rows>
+						<row>
+							<label value="ID" />
+							<textbox width="35%" id="txtId" />
+							<cell />
+						</row>
+						<row>
+							<label value="Nama Laptop" />
+							<textbox width="75%" id="txtName" />
+							<cell />
+						</row>
+						<row>
+							<label value="Merk" />
+							<combobox width="50%" id="cmbMerk"/>
+							<cell />
+						</row>
+						<row>
+							<label value="Type" />
+							<combobox width="60%" id="cmbType"/>
+							<cell />
+						</row>
+					</rows>
+				</grid>
+			</groupbox>
+			<groupbox>
+				<div sclass="action-bar" hflex="1" align="left" style="border-bottom:solid 1px #ddd; padding-bottom:5px">
+					<div sclass="btn-group btn-group-sm">
+						<button sclass="btn btn-default" id="btnFind" label="Find"/>
+						<button sclass="btn btn-default" id="btnReset" label="Reset"/>
+						<button sclass="btn btn-default" id="btnCancel" label="Cancel"/>
+					</div>
+				</div>
+			</groupbox>
+			<groupbox id="grpListbox" vflex="min" style="overflow:auto">
+				<listbox id="listBoxLaptop" height="150px">
+					<listhead>
+						<listheader label="ID" hflex="min" style="text-align:center"/>
+						<listheader label="NAMA LAPTOP" hflex="min" style="text-align:center"/>
+						<listheader label="MERK" hflex="min" style="text-align:center"/>
+						<listheader label="TYPE" hflex="min" style="text-align:center"/>
+					</listhead>
+				</listbox>
+			</groupbox>
+		</vlayout>
+	</window>
+</zk>

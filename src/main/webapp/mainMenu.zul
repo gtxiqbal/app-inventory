@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+    <script type="text/javascript" src="/asset/jsScript/jquery.filter_input.js"/>
+    <script type="text/javascript" src="/asset/jsScript/autoNumeric.js"/>
+    <style>
+        .z-textbox:focus, .z-textbox:focus input,
+        .z-decimalbox:focus, .z-decimalbox:focus input,
+        .z-intbox:focus, .z-intbox:focus input,
+        .z-longbox:focus, .z-longbox:focus input,
+        .z-doublebox:focus, .z-doublebox:focus input,
+        .z-combobox-input:focus {
+        border: 1px solid #90BCE6;
+        background: #ffffaa;
+        }
+        .z-loading {
+        top: 50% !important;
+        left: 45% !important;
+        align: center;
+        vertical-align: middle;
+        }
+        
+        .z-textbox[disabled], .z-decimalbox[disabled], .z-intbox[disabled], .z-longbox[disabled], .z-doublebox[disabled] {
+        color: #000000 !important;
+        background: #87CEFA !important;
+        cursor: default !important;
+        font-weight:bold;
+        }
+        
+        .z-combobox-disabled *, .z-bandbox-disabled *, .z-datebox-disabled *, .z-timebox-disabled *, .z-spinner-disabled *, .z-doublespinner-disabled * {
+        color: #000000 !important;
+<!--        background: #87CEFA !important;-->
+        cursor: default !important;
+        font-weight:bold;
+        }
+        
+        .z-groupbox-tl,.z-groupbox-tr,.z-groupbox-hl,.z-groupbox-hr,.z-groupbox-hm,.z-groupbox-bm,.z-groupbox-bl,.z-groupbox-br {
+        background:transparent;
+        }
+        
+        tr.z-row td.z-row-inner, tr.z-row .z-cell,div.z-grid{
+        background: white;
+        }
+        
+        .z-caption {
+        font-size=50px; font-family:courier; font-weight: 900; color: #7F00FF; background: none; text-decoration: underline overline;
+        }
+        
+        .z-column-content, .z-row-content, .z-group-content, .z-groupfoot-content, .z-footer-content {
+        padding: 0px;
+        color: #000000;
+        }
+        
+        .z-groupbox>.z-groupbox-header {
+        height: 10px;
+        }
+        
+        .z-label {font-weight:bold};
+    </style>
+    
+    <borderlayout sclass="complex-layout" apply="${mainMenuController}">
+        <north size="10%" border="0">
+            <label value="PT. Collega Inti Pratama" />
+        </north>
+        <west size="27%" splittable="true" collapsible="true" style="overflow:auto">
+            <panel vflex="min" hflex="1" height="600px">
+                <panelchildren>
+                    <vbox align="center">
+                    <tree id="treeMainMenu" hflex="min" height="440px">
+                        <treechildren>
+                            <treeitem label="Menu" open="true">
+                                <treechildren>
+                                    <treeitem label="Pemeliharaan Data Laptop" value="view/laptop.zul"/>
+                                    <treeitem label="Pemeliharaan Data Karyawan" value="view/karyawan.zul"/>
+                                    <treeitem label="Pemeliharaan Inventarisir" value="view/inventaris.zul"/>
+                                </treechildren>
+                            </treeitem>
+                        </treechildren>
+                    </tree>
+                    <groupbox>
+                        <label id="lblInfo" />
+                    </groupbox>
+                    <groupbox>
+                        <button id="btnLogout" label="Logout" width="100px" />
+                    </groupbox>
+                    </vbox>
+                </panelchildren>
+            </panel>
+        </west>
+        <center>
+            <div id="xcontents" hflex="1" vflex="1"/>
+        </center>
+        <south size="1%" />
+    </borderlayout>
+</zk>

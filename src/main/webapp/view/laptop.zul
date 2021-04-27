@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+	<window id="win" border="0" hflex="1" vflex="1" sclass="inner-window"
+	        apply="${laptopController}">
+		<caption label="Pemeliharaan Data Laptop"/>
+		<vlayout vflex="1" style="overflow:auto">
+			<grid>
+				<columns>
+					<column/>
+					<column/>
+					<column/>
+					<column/>
+					<column/>
+					<column/>
+				</columns>
+				<rows>
+					<row>
+						<label value="ID" />
+						<cell colspan="2">
+							<textbox width="40%" id="txtId" disabled="true"/>
+						</cell>
+						<label value="CPU" />
+						<cell colspan="2">
+							<doublebox width="50%" id="txtCpu" format="#,###0.0" style="text-align:right"/>
+						</cell>
+					</row>
+					<row>
+						<label value="Nama Laptop" />
+						<cell colspan="2">
+							<textbox width="100%" id="txtName"/>
+						</cell>
+						<label value="RAM" />
+						<cell colspan="2">
+							<doublebox width="50%" id="txtRam" format="#,###0.0" style="text-align:right" />
+						</cell>
+					</row>
+					<row>
+						<label value="Merk" />
+						<cell colspan="2">
+							<combobox width="50%" id="cmbMerk"/>
+						</cell>
+						<label value="VGA" />
+						<cell colspan="2">
+							<doublebox width="50%" id="txtVga" format="#,###0.0" style="text-align:right"/>
+						</cell>
+					</row>
+					<row>
+						<label value="Type" />
+						<cell colspan="2">
+							<combobox width="60%" id="cmbType"/>
+						</cell>
+						<label value="RELEASE" />
+						<cell colspan="2">
+							<datebox id="dtRelease" format="yyyy-MM-dd" width="60%" disabled="true"/>
+						</cell>
+					</row>
+					<row>
+						<label value="Total" />
+						<cell colspan="2">
+							<intbox width="20%" id="txtTotal" constraint="no negative"/>
+						</cell>
+						<cell colspan="3" />
+					</row>
+				</rows>
+			</grid>
+			<div sclass="action-bar" hflex="1" align="left" style="border-bottom:solid 1px #ddd; padding-bottom:5px">
+				<div sclass="btn-group btn-group-sm">
+					<button sclass="btn btn-default" id="btnReset" label="Reset"/>
+					<button sclass="btn btn-default" id="btnSave" label="Save"/>
+					<button sclass="btn btn-default" id="btnDelete" label="Delete"/>
+				</div>
+			</div>
+			<groupbox vflex="min" style="overflow:auto">
+				<listbox id="listboxLaptop" height="300px">
+					<listhead>
+						<listheader label="ID" hflex="min" style="text-align:center" />
+						<listheader label="NAMA" hflex="min" style="text-align:center" />
+						<listheader label="MERK" hflex="min" style="text-align:center" />
+						<listheader label="TYPE" hflex="min" style="text-align:center" />
+						<listheader label="CPU" hflex="min" style="text-align:center" />
+						<listheader label="RAM" hflex="min" style="text-align:center" />
+						<listheader label="VGA" hflex="min" style="text-align:center" />
+						<listheader label="TOTAL" hflex="min" style="text-align:center" />
+						<listheader label="RELEASE" hflex="min" style="text-align:center" />
+					</listhead>
+				</listbox>
+			</groupbox>
+		</vlayout>
+	</window>
+</zk>

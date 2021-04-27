@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+	<window id="win" border="0" hflex="1" vflex="1" sclass="inner-window"
+	        apply="${inventarisController}">
+		<caption id="capInventaris" label="Pemeliharaan Inventarisir"/>
+		<groupbox>
+			<div sclass="action-bar" hflex="1" align="left" style="border-bottom:solid 1px #ddd; padding-bottom:5px">
+				<div sclass="btn-group btn-group-sm">
+					<button sclass="btn btn-default" id="btnAdd" label="Add"/>
+					<button sclass="btn btn-default" id="btnDelete" label="Delete"/>
+				</div>
+			</div>
+		</groupbox>
+		<groupbox vflex="min" style="overflow:auto">
+			<listbox id="listboxInventaris" height="344px">
+				<listhead>
+					<listheader label="NIK" hflex="min" style="text-align:center"/>
+					<listheader label="NAMA LENGKAP" hflex="min" style="text-align:center"/>
+					<listheader label="TOTAL PERANGKAT" hflex="min" style="text-align:center"/>
+				</listhead>
+			</listbox>
+		</groupbox>
+	</window>
+</zk>

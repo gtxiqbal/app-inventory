@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+	<window id="winSearchKaryawan" border="0" hflex="1" vflex="1" sclass="inner-window"
+	        apply="${searchKaryawanController}" action="show: slideDown;hide: slideUp" closable="true">
+		<vlayout width="1000px" height="300px" style="overflow: auto">
+			<groupbox>
+				<caption label="Pencarian Data Karyawan" />
+				<grid>
+					<columns>
+						<column hflex="1"/>
+						<column hflex="3"/>
+						<column hflex="4"/>
+					</columns>
+					<rows>
+						<row>
+							<label value="NIK" />
+							<longbox width="35%" id="txtNik" />
+							<cell />
+						</row>
+						<row>
+							<label value="Nama Depan" />
+							<textbox width="75%" id="txtFirstName" />
+							<cell />
+						</row>
+						<row>
+							<label value="Nama Belakang" />
+							<textbox width="75%" id="txtLastName" />
+							<cell />
+						</row>
+						<row>
+							<label value="Email" />
+							<textbox width="75%" id="txtEmail" />
+							<cell />
+						</row>
+					</rows>
+				</grid>
+			</groupbox>
+			<groupbox>
+				<div sclass="action-bar" hflex="1" align="left" style="border-bottom:solid 1px #ddd; padding-bottom:5px">
+					<div sclass="btn-group btn-group-sm">
+						<button sclass="btn btn-default" id="btnFind" label="Find"/>
+						<button sclass="btn btn-default" id="btnReset" label="Reset"/>
+						<button sclass="btn btn-default" id="btnCancel" label="Cancel"/>
+					</div>
+				</div>
+			</groupbox>
+			<groupbox id="grpListbox">
+				<listbox id="listboxKaryawan" height="150px">
+					<listhead>
+						<listheader label="NIK" hflex="min" style="text-align:center"/>
+						<listheader label="NAMA LENGKAP" hflex="min" style="text-align:center"/>
+						<listheader label="EMAIL" hflex="min" style="text-align:center"/>
+						<listheader label="STATUS PEGAWAI" hflex="min" style="text-align:center"/>
+						<listheader label="JABATAN" hflex="1" style="text-align:center"/>
+					</listhead>
+				</listbox>
+			</groupbox>
+		</vlayout>
+	</window>
+</zk>

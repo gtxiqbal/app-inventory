@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+	<window id="win" border="0" hflex="1" vflex="1" sclass="inner-window"
+	        apply="${karyawanController}">
+		<caption label="Pemeliharaan Data Karyawan"/>
+		<vlayout vflex="1" style="overflow:auto">
+			<grid>
+				<columns>
+					<column/>
+					<column/>
+					<column/>
+					<column/>
+					<column/>
+					<column/>
+					<column/>
+				</columns>
+				<rows>
+					<row>
+						<label value="NIK" />
+						<cell colspan="2">
+							<longbox width="40%" id="txtNik" disabled="true"/>
+							<longbox width="40%" id="txtNikOld" disabled="true" visible="false"/>
+						</cell>
+						<label value="Divisi" />
+						<cell colspan="3">
+							<combobox width="100%" id="cmbDivisi" />
+						</cell>
+					</row>
+					<row>
+						<label value="Nama Depan" />
+						<cell colspan="2">
+							<textbox width="100%" id="txtFirstName"/>
+						</cell>
+						<label value="Departement" />
+						<cell colspan="3">
+							<combobox width="100%" id="cmbDept" />
+						</cell>
+					</row>
+					<row>
+						<label value="Nama Belakang" />
+						<cell colspan="2">
+							<textbox width="100%" id="txtLastName"/>
+						</cell>
+						<label value="Jabatan" />
+						<cell colspan="3">
+							<combobox width="100%" id="cmbJabatan" />
+						</cell>
+					</row>
+					<row>
+						<label value="Email" />
+						<cell colspan="2">
+							<textbox width="100%" id="txtEmail"/>
+						</cell>
+						<label value="Tempat, Tanggal Lahir" />
+						<cell colspan="3">
+							<hbox>
+								<textbox width="100%" id="txtTmpLahir"/>
+								<datebox id="dtTglLahir" format="yyyy-MM-dd" width="100%"/>
+							</hbox>
+						</cell>
+					</row>
+					<row>
+						<label value="No HP" />
+						<cell colspan="2">
+							<textbox width="100%%" id="txtNoHp"/>
+						</cell>
+						<label value="Tanggal Masuk Bekerja" />
+						<cell colspan="3">
+							<datebox id="dtTglMasuk" format="yyyy-MM-dd" width="40%" disabled="true"/>
+						</cell>
+					</row>
+					<row>
+						<label value="Status Karyawan" />
+						<cell colspan="2">
+							<combobox width="80%" id="cmbStatus" />
+						</cell>
+						<cell colspan="4" />
+					</row>
+				</rows>
+			</grid>
+			<div sclass="action-bar" hflex="1" align="left" style="border-bottom:solid 1px #ddd; padding-bottom:5px">
+				<div sclass="btn-group btn-group-sm">
+					<button sclass="btn btn-default" id="btnReset" label="Reset"/>
+					<button sclass="btn btn-default" id="btnSave" label="Save"/>
+					<button sclass="btn btn-default" id="btnDelete" label="Delete"/>
+				</div>
+			</div>
+			<groupbox vflex="min" style="overflow:auto">
+				<listbox id="listboxKaryawan" height="300px">
+					<listhead>
+						<listheader label="NIK" hflex="min" style="text-align:center"/>
+						<listheader label="NAMA LENGKAP" hflex="min" style="text-align:center"/>
+						<listheader label="EMAIL" hflex="min" style="text-align:center"/>
+						<listheader label="NO. HP" hflex="min" style="text-align:center"/>
+						<listheader label="DIVISI" hflex="min" style="text-align:center"/>
+						<listheader label="DEPARTEMENT" hflex="min" style="text-align:center"/>
+						<listheader label="JABATAN" hflex="min" style="text-align:center"/>
+						<listheader label="STATUS PEGAWAI" hflex="min" style="text-align:center"/>
+						<listheader label="TEMPAT, TANGGAL LAHIR" hflex="min" style="text-align:center"/>
+						<listheader label="TANGGAL MASUK BEKERJA" hflex="min" style="text-align:center"/>
+					</listhead>
+				</listbox>
+			</groupbox>
+		</vlayout>
+	</window>
+</zk>

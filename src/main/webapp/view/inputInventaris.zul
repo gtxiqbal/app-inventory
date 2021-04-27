@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?page id="inputInventaris"?>
+<zk>
+	<window id="winInputInventaris" border="0" hflex="1" vflex="1" sclass="inner-window"
+	        apply="${inputInventarisiController}" action="show: slideDown;hide: slideUp" closable="true">
+		<caption label="Input Data Inventarisir"/>
+		<vlayout vflex="1" style="overflow: auto">
+			<groupbox>
+				<caption label="Data Karyawan" />
+				<grid>
+					<columns>
+						<column/>
+						<column/>
+						<column/>
+						<column/>
+						<column/>
+						<column/>
+						<column/>
+					</columns>
+					<rows>
+						<row>
+							<label value="NIK" />
+							<cell colspan="2">
+								<hbox>
+									<longbox width="100%" height="100%" id="txtNik" disabled="true" />
+									<button width="100%" height="100%" id="btnFindKaryawan" label="Cari" />
+								</hbox>
+							</cell>
+							<label value="Divisi" />
+							<cell colspan="3">
+								<combobox width="100%" id="cmbDivisi" disabled="true" />
+							</cell>
+						</row>
+						<row>
+							<label value="Nama Depan" />
+							<cell colspan="2">
+								<textbox width="100%" id="txtFirstName" disabled="true" />
+							</cell>
+							<label value="Departement" />
+							<cell colspan="3">
+								<combobox width="100%" id="cmbDept" disabled="true" />
+							</cell>
+						</row>
+						<row>
+							<label value="Nama Belakang" />
+							<cell colspan="2">
+								<textbox width="100%" id="txtLastName" disabled="true" />
+							</cell>
+							<label value="Jabatan" />
+							<cell colspan="3">
+								<combobox width="100%" id="cmbJabatan" disabled="true" />
+							</cell>
+						</row>
+						<row>
+							<label value="Email" />
+							<cell colspan="2">
+								<textbox width="100%" id="txtEmail" disabled="true" />
+							</cell>
+							<label value="Tempat, Tanggal Lahir" />
+							<cell colspan="3">
+								<hbox>
+									<textbox width="100%" id="txtTmpLahir" disabled="true" />
+									<datebox id="dtTglLahir" format="yyyy-MM-dd" width="100%" disabled="true" />
+								</hbox>
+							</cell>
+						</row>
+						<row>
+							<label value="No HP" />
+							<cell colspan="2">
+								<textbox width="100%%" id="txtNoHp" disabled="true" />
+							</cell>
+							<label value="Tanggal Masuk Bekerja" />
+							<cell colspan="3">
+								<datebox id="dtTglMasuk" format="yyyy-MM-dd" width="40%" disabled="true"/>
+							</cell>
+						</row>
+						<row>
+							<label value="Status Karyawan" />
+							<cell colspan="2">
+								<combobox width="80%" id="cmbStatus" disabled="true" />
+							</cell>
+							<cell colspan="4" />
+						</row>
+					</rows>
+				</grid>
+			</groupbox>
+			<groupbox vflex="min" style="overflow:auto">
+				<caption label="Daftar Laptop Yang Digunakan" />
+				<div sclass="action-bar" hflex="1" align="left" style="border-bottom:solid 1px #ddd; padding-bottom:5px">
+					<div sclass="btn-group btn-group-sm">
+						<button sclass="btn btn-default" id="btnAddLaptop" label="ADD" />
+						<button sclass="btn btn-default" id="btnDeleteLaptop" label="DELETE" />
+					</div>
+				</div>
+				<listbox id="listboxSewaLaptop" height="200px">
+					<listhead>
+						<listheader label="ID" hflex="1" style="text-align:center" />
+						<listheader label="NAMA LAPTOP" hflex="1" style="text-align:center" />
+						<listheader label="MERK" hflex="1" style="text-align:center" />
+						<listheader label="TYPE" hflex="1" style="text-align:center" />
+						<listheader label="CPU" hflex="1" style="text-align:center" />
+						<listheader label="RAM" hflex="1" style="text-align:center" />
+						<listheader label="VGA" hflex="1" style="text-align:center" />
+						<listheader label="TOTAL" hflex="1" style="text-align:center" />
+						<listheader label="TANGGAL SEWA" hflex="min" width="300px" style="text-align:center" />
+						<listheader label="TANGGAL PENGEMBALIAN" hflex="min" width="300px" style="text-align:center" />
+					</listhead>
+				</listbox>
+			</groupbox>
+		</vlayout>
+		<groupbox>
+			<div sclass="action-bar" hflex="1" align="left" style="border-bottom:solid 1px #ddd; padding-bottom:5px">
+				<div sclass="btn-group btn-group-sm">
+					<button sclass="btn btn-default" id="btnReset" width="100px" label="RESET"/>
+					<button sclass="btn btn-default" id="btnOk" width="100px" label="OK"/>
+					<button sclass="btn btn-default" id="btnCancel" width="100px" label="CANCEL"/>
+				</div>
+			</div>
+		</groupbox>
+	</window>
+</zk>
