@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?page title="APLIKAS INVENTORI LAPTOP KARYAWAN"?>
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <zk>
+	<style>
+		.z-loading {
+		top: 50% !important;
+		left: 45% !important;
+		align: center;
+		vertical-align: middle;
+		}
+	</style>
 	<hbox vflex="1" hflex="1" align="center"
 	      pack="center" spacing="20px">
 		<vlayout>

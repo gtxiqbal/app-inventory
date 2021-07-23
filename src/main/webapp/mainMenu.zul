@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?page title="APLIKAS INVENTORI LAPTOP KARYAWAN"?>
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <zk>
     <script type="text/javascript" src="/asset/jsScript/jquery.filter_input.js"/>
