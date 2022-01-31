@@ -68,6 +68,7 @@ public class InputInventarisiController extends SelectorComposer<Component> {
     private Karyawan karyawan;
     private Long nik;
     private List<Long> niks = new ArrayList<>();
+    private Boolean isEnabled = false;
 
     @Override
     public void doAfterCompose(Component comp) throws Exception {
@@ -75,6 +76,7 @@ public class InputInventarisiController extends SelectorComposer<Component> {
         Execution current = Executions.getCurrent();
         Map<String, Object> arg = (Map<String, Object>) current.getArg();
         if (!arg.isEmpty()) {
+            isEnabled = (Boolean) arg.get("ISENABLED");
             if (arg.get("NIKS") != null) {
                 niks = (List<Long>) arg.get("NIKS");
             } else if (arg.get("NIK") != null) {
@@ -147,6 +149,7 @@ public class InputInventarisiController extends SelectorComposer<Component> {
                     txtTotal.setId("txtStok-" + listboxSewaLaptop.getItems().size());
                     txtTotal.setValue(sewa.getTotal());
                     txtTotal.setHflex("1");
+                    txtTotal.setDisabled(isEnabled);
                     Listcell cell = new Listcell();
                     cell.appendChild(txtTotal);
                     listitem.appendChild(cell);
@@ -158,6 +161,7 @@ public class InputInventarisiController extends SelectorComposer<Component> {
                     dtTglPengembalian.setValue(sewa.getTglPengembalian());
                     dtTglPengembalian.setHflex("1");
                     dtTglPengembalian.setFormat("yyyy-MM-dd");
+                    dtTglPengembalian.setDisabled(isEnabled);
                     cell = new Listcell();
                     cell.appendChild(dtTglPengembalian);
                     listitem.appendChild(cell);

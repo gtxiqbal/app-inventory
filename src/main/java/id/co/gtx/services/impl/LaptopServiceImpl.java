@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -100,6 +101,19 @@ public class LaptopServiceImpl implements LaptopService {
 
     @Override
     @Transactional
+    public DtoResponse batchUpdate(List<Laptop> laptops) {
+        List<String> idLaptop = new ArrayList<>();
+        for (Laptop laptop: laptops) {
+            if (!"".equals(laptop.getId()) && laptop.getId() != null) {
+                idLaptop.add(laptop.getId());
+            }
+        }
+        List<Laptop> laptopList = laptopRepository.findAllById(idLaptop);
+        return update(laptopList);
+    }
+
+    @Override
+    @Transactional
     public DtoResponse delete(String id) {
         DtoResponse response = new DtoResponse("DELETE LAPTOP", "FAILED", "Laptop ID Tidak Ditemukan");
         DtoResponse<Laptop> laptopResp = findById(id);
@@ -145,6 +159,24 @@ public class LaptopServiceImpl implements LaptopService {
             }
         } else {
             response.setMsg(response.getMsg() + ", " + laptopResp.getMsg());
+        }
+        return response;
+    }
+
+    private DtoResponse update(List<Laptop> laptops) {
+        DtoResponse response = new DtoResponse("UPDATE LAPTOP", "FAILED", "Gagal Update Data Laptop");
+        if (laptops.size() > 0) {
+            List<Laptop> newListLaptop = new ArrayList<>();
+            for (Laptop laptop: laptops) {
+                laptop.setUpdateAt(new Date(new Date().getTime()));
+                newListLaptop.add(laptop);
+            }
+            newListLaptop = laptopRepository.saveAll(newListLaptop);
+            if (newListLaptop.size() > 0) {
+                response.setStatus("SUCCESS");
+                response.setMsg("Berhasil Update Data Laptop");
+                response.setData(newListLaptop);
+            }
         }
         return response;
     }

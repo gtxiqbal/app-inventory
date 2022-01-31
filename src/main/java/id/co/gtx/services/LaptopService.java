@@ -5,6 +5,8 @@ import id.co.gtx.entity.dto.DtoResponse;
 import id.co.gtx.entity.enumz.Merk;
 import id.co.gtx.entity.enumz.Type;
 
+import java.util.List;
+
 public interface LaptopService {
     String generateId();
 
@@ -19,6 +21,8 @@ public interface LaptopService {
     DtoResponse findByMerkAndType(Merk merk, Type type);
 
     DtoResponse createOrUpdate(Laptop laptop);
+
+    DtoResponse batchUpdate(List<Laptop> laptops);
 
     DtoResponse delete(String id);
 }

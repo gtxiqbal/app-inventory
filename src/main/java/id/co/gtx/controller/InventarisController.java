@@ -48,8 +48,9 @@ public class InventarisController extends SelectorComposer<Component> {
         DtoKaryawanTotalLaptop karyawanTotalLaptop = MapperUtil.mappingClass(item.getAttribute("DATA"), DtoKaryawanTotalLaptop.class);
         Map<String, Object> args = new HashMap<>();
         args.put("NIK", karyawanTotalLaptop.getNik());
+        args.put("ISENABLED", true);
         Window window = (Window) Executions.createComponents("view/inputInventaris.zul", null, args);
-        doAction(window);
+        doAction(window, true);
     }
 
     @Listen("onClick = #btnAdd")
@@ -61,8 +62,9 @@ public class InventarisController extends SelectorComposer<Component> {
         }
         Map<String, Object> args = new HashMap<>();
         args.put("NIKS", niks);
+        args.put("ISENABLED", false);
         Window window = (Window) Executions.createComponents("view/inputInventaris.zul", null, args);
-        doAction(window);
+        doAction(window, false);
     }
 
     @Listen("onClick = #btnDelete")
@@ -86,10 +88,22 @@ public class InventarisController extends SelectorComposer<Component> {
         });
     }
 
-    public void doAction(Window window) {
+    public void doAction(Window window, boolean isEnabled) {
+        Button btnAddLaptop = (Button) window.getFellow("btnAddLaptop");
+        btnAddLaptop.setDisabled(isEnabled);
+        Button btnDeleteLaptop = (Button) window.getFellow("btnDeleteLaptop");
+        btnDeleteLaptop.setDisabled(isEnabled);
+        Button btnReset = (Button) window.getFellow("btnReset");
+        btnReset.setDisabled(isEnabled);
         Button btnOk = (Button) window.getFellow("btnOk");
+        btnOk.setDisabled(isEnabled);
         Button btnCancel = (Button) window.getFellow("btnCancel");
         Listbox listboxSewaLaptop = (Listbox) window.getFellow("listboxSewaLaptop");
+        if (isEnabled) {
+            for (Listitem item: listboxSewaLaptop.getItems()) {
+
+            }
+        }
         btnOk.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
             @Override
             public void onEvent(Event event) throws Exception {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?page title="APLIKAS INVENTORI LAPTOP KARYAWAN"?>
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
-<zk>
+<zk><window style="background-color:#FFF8DC" border="none" hflex="true" vflex="true">
     <script type="text/javascript" src="/asset/jsScript/jquery.filter_input.js"/>
     <script type="text/javascript" src="/asset/jsScript/autoNumeric.js"/>
     <style>
@@ -19,77 +20,91 @@
         align: center;
         vertical-align: middle;
         }
-        
-        .z-textbox[disabled], .z-decimalbox[disabled], .z-intbox[disabled], .z-longbox[disabled], .z-doublebox[disabled] {
+
+        .z-textbox[disabled], .z-decimalbox[disabled], .z-intbox[disabled], .z-longbox[disabled], .z-doublebox[disabled]
+        {
         color: #000000 !important;
         background: #87CEFA !important;
         cursor: default !important;
         font-weight:bold;
         }
-        
-        .z-combobox-disabled *, .z-bandbox-disabled *, .z-datebox-disabled *, .z-timebox-disabled *, .z-spinner-disabled *, .z-doublespinner-disabled * {
+
+        .z-combobox-disabled *, .z-bandbox-disabled *, .z-datebox-disabled *, .z-timebox-disabled *, .z-spinner-disabled
+        *, .z-doublespinner-disabled * {
         color: #000000 !important;
-<!--        background: #87CEFA !important;-->
+        <!--        background: #87CEFA !important;-->
         cursor: default !important;
         font-weight:bold;
         }
-        
-        .z-groupbox-tl,.z-groupbox-tr,.z-groupbox-hl,.z-groupbox-hr,.z-groupbox-hm,.z-groupbox-bm,.z-groupbox-bl,.z-groupbox-br {
+
+        .z-groupbox-tl,.z-groupbox-tr,.z-groupbox-hl,.z-groupbox-hr,.z-groupbox-hm,.z-groupbox-bm,.z-groupbox-bl,.z-groupbox-br
+        {
         background:transparent;
         }
-        
+
         tr.z-row td.z-row-inner, tr.z-row .z-cell,div.z-grid{
         background: white;
         }
-        
+
         .z-caption {
-        font-size=50px; font-family:courier; font-weight: 900; color: #7F00FF; background: none; text-decoration: underline overline;
+        font-size=50px; font-family:courier; font-weight: 900; color: #7F00FF; background: none; text-decoration:
+        underline overline;
         }
-        
+
         .z-column-content, .z-row-content, .z-group-content, .z-groupfoot-content, .z-footer-content {
         padding: 0px;
         color: #000000;
         }
-        
+
         .z-groupbox>.z-groupbox-header {
         height: 10px;
         }
-        
+
         .z-label {font-weight:bold};
     </style>
-    
+    <caption>
+        <hbox>
+            <image src="logo_header.png" hflex="max" height="60px"/>
+        </hbox>
+        <hbox>
+            <label value="PT. Collega Inti Pratama"/>
+        </hbox>
+
+    </caption>
     <borderlayout sclass="complex-layout" apply="${mainMenuController}">
-        <north size="10%" border="0">
-            <label value="PT. Collega Inti Pratama" />
-        </north>
+        <!--                <north size="10%" border="0">-->
+        <!--                    <label value="PT. Collega Inti Pratama" />-->
+        <!--                </north>-->
         <west size="27%" splittable="true" collapsible="true" style="overflow:auto">
             <panel vflex="min" hflex="1" height="600px">
                 <panelchildren>
                     <vbox align="center">
-                    <tree id="treeMainMenu" hflex="min" height="440px">
-                        <treechildren>
-                            <treeitem label="Menu" open="true">
-                                <treechildren>
-                                    <treeitem label="Pemeliharaan Data Laptop" value="view/laptop.zul"/>
-                                    <treeitem label="Pemeliharaan Data Karyawan" value="view/karyawan.zul"/>
-                                    <treeitem label="Pemeliharaan Inventarisir" value="view/inventaris.zul"/>
-                                </treechildren>
-                            </treeitem>
-                        </treechildren>
-                    </tree>
-                    <groupbox>
-                        <label id="lblInfo" />
-                    </groupbox>
-                    <groupbox>
-                        <button id="btnLogout" label="Logout" width="100px" />
-                    </groupbox>
+                        <tree id="treeMainMenu" hflex="min" height="320px">
+                            <treechildren>
+                                <treeitem label="Menu" open="true">
+                                    <treechildren>
+                                        <treeitem label="Pemeliharaan Data Laptop" value="view/laptop.zul"/>
+                                        <treeitem label="Pemeliharaan Data Karyawan" value="view/karyawan.zul"/>
+                                        <treeitem label="Pemeliharaan Inventarisir" value="view/inventaris.zul"/>
+                                    </treechildren>
+                                </treeitem>
+                            </treechildren>
+                        </tree>
+                        <groupbox>
+                            <label id="lblInfo"/>
+                        </groupbox>
+                        <groupbox>
+                            <button id="btnLogout" label="Logout" width="100px"/>
+                        </groupbox>
                     </vbox>
                 </panelchildren>
             </panel>
         </west>
         <center>
-            <div id="xcontents" hflex="1" vflex="1"/>
+            <div id="xcontents" hflex="1" vflex="1" />
+            <!--            <image src="collegafull.png" hflex="min" height="400px" />-->
         </center>
-        <south size="1%" />
+        <south size="1%"/>
     </borderlayout>
+</window>
 </zk>

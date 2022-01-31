@@ -6,11 +6,13 @@ import id.co.gtx.entity.Sewa;
 import id.co.gtx.entity.dto.DtoKaryawanTotalLaptop;
 import id.co.gtx.entity.dto.DtoResponse;
 import id.co.gtx.repository.SewaRepository;
+import id.co.gtx.services.LaptopService;
 import id.co.gtx.services.SewaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zkoss.zk.ui.WrongValueException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,9 @@ public class SewaServiceImpl implements SewaService {
 
     @Autowired
     private SewaRepository sewaRepository;
+
+    @Autowired
+    private LaptopService laptopService;
 
     @Override
     public DtoResponse findAll() {
@@ -86,6 +91,26 @@ public class SewaServiceImpl implements SewaService {
             newSewa = sewas;
 
         DtoResponse response = new DtoResponse("SAVE LIST SEWA", "SUCCESS", "Berhasil Menyimpan Data Inventarisir");
+        List<Laptop> laptops = new ArrayList<>();
+        for (Sewa sewa: newSewa) {
+            DtoResponse laptopService = this.laptopService.findById(sewa.getLaptop().getId());
+            if (laptopService.getStatus().equals("SUCCESS")) {
+                Laptop laptop = (Laptop) laptopService.getData();
+                if (sewa.getTotal() > laptop.getTotal()) {
+                    response.setStatus("FAILED");
+                    response.setMsg("Input Jumlah Laptop " + laptop.getName() + ", tidak boleh lebih dari stok");
+                    throw new WrongValueException("Input Jumlah Laptop " + laptop.getName() + ", tidak boleh lebih dari stok");
+//                    return response;
+                } else {
+                    laptop.setTotal(laptop.getTotal() - sewa.getTotal());
+                    laptops.add(laptop);
+                }
+            }
+        }
+
+        if (laptopService.batchUpdate(laptops).getStatus().equals("FAILED")) {
+            throw new WrongValueException("Gagal Update Stok Laptop");
+        }
         response.setData(sewaRepository.saveAll(newSewa));
         return response;
     }
@@ -96,6 +121,18 @@ public class SewaServiceImpl implements SewaService {
         DtoResponse response = new DtoResponse("DELETE SEWA", "FAILED", "Gagal Hapus Data Inventarisir");
         List<Sewa> sewas = sewaRepository.findByKaryawanNik(nik);
         if (sewas.size() > 0 ) {
+            List<Laptop> laptops = new ArrayList<>();
+            for (Sewa sewa: sewas) {
+                DtoResponse laptopResp = laptopService.findById(sewa.getLaptop().getId());
+                if (laptopResp.getStatus().equals("SUCCESS")) {
+                    Laptop laptop = (Laptop) laptopResp.getData();
+                    laptop.setTotal(laptop.getTotal() + sewa.getTotal());
+                    laptops.add(laptop);
+                }
+            }
+            if (laptopService.batchUpdate(laptops).getStatus().equals("FAILED")) {
+                throw new WrongValueException("Gagal Update Rollback Stok Laptop");
+            }
             response.setStatus("SUCCESS");
             response.setMsg("Berhasil Hapus Data Inventarisir By NIK: " + nik);
             response.setData(sewas);

@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?page title="APLIKAS INVENTORI LAPTOP KARYAWAN"?>
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <zk>
+	<style>
+		.z-loading {
+		top: 50% !important;
+		left: 45% !important;
+		align: center;
+		vertical-align: middle;
+		}
+	</style>
 	<hbox vflex="1" hflex="1" align="center"
 	      pack="center" spacing="20px">
 		<vlayout>
-			<window id="loginWin"
+			<window style="background-color:#FFF8DC"  id="loginWin"
 			        apply="${loginController}"
 			        title="Login Inventaris" border="normal" hflex="min">
 				<vbox hflex="min" align="center">
+					<image  src="collegafull.png" hflex="max" height="50px"/>
 					<grid hflex="min">
 						<columns>
 							<column hflex="min" align="right" />
@@ -32,7 +42,11 @@
 						</div>
 					</div>
 				</vbox>
-			</window>
+
+				</window>
+			<div align="right" style="color:#d42424;font-size: 5px;font" >
+				version: 1.1
+			</div>
 		</vlayout>
 	</hbox>
 </zk>
